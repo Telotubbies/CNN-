@@ -22,7 +22,7 @@
 
 ## วิธีใช้งาน
 1. เตรียมไฟล์ splits ให้ครบ train.csv, val.csv, test.csv  
-2. เทรนโมเดลโดยใช้ **resnet9_safe_trainV4.ipynb** ซึ่งตั้งค่าให้ใช้ Focal Loss สำหรับแก้ปัญหาชุดข้อมูลไม่สมดุล และรองรับ Mixed Precision Training  
+2. เทรนโมเดลโดยใช้ **resnet9_safe_trainV4.ipynb** และรองรับ Mixed Precision Training  
 
 ## ไฮเปอร์พารามิเตอร์ (ค่าเริ่มต้น v4)
 - ขนาดภาพ 256x256
