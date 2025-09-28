@@ -14,6 +14,18 @@ Per-class (precision / recall / F1 / support)
 
 Key takeaway: **minority classes (2, 4) are under-detected**, especially class 4 (recall 0.22). Accuracy alone hides this; rely on **Balanced Accuracy / Macro-F1**.
 
+### Known failure modes
+- **Oversampling มากเกินไป → overfit minority**  
+  ถ้าเราดึงภาพจากคลาสเล็ก (เช่น Spaghetti) ซ้ำๆ เยอะเกินไป  
+  โมเดลจะ “จำภาพ” แทนที่จะ “เรียนรู้ฟีเจอร์” → ตอนเทสกับภาพใหม่จะทายพลาดง่าย  
+
+- **Augmentation สีแรงเกินไป → สัญญาณหาย**  
+  คลาส defect บางทีต่างกันแค่เล็กน้อย (เช่น เส้นใยบางๆ หรือรูเล็กๆ)  
+  ถ้าไปปรับสี/ความสว่าง/contrast แรงเกินไป → ร่องรอย defect ถูกบดบัง โมเดลเลยไม่เห็น  
+
+- **ตัดสินจาก accuracy อย่างเดียว → minority collapse**  
+  Accuracy สูงอาจหลอกตา เพราะคลาสใหญ่ (Good/Under-Extrusion) ถูกทายถูกเกือบหมด  
+  แต่คลาสเล็ก (Stringing/Spaghetti) โมเดลอาจทายไม่ออกเลย → Accuracy ยังดูดีแต่โมเดลใช้จริงไม่ได้  
 ### What we do for class imbalance (no code)
 1) **Loss design**
    - Use **Focal Loss** (γ≈2.0) to upweight hard/rare samples.
@@ -41,7 +53,4 @@ Key takeaway: **minority classes (2, 4) are under-detected**, especially class 4
 - **Early-stop / select**: ใช้ **Macro-F1 (val)**  
 - **Report**: Accuracy, Balanced Acc., Top-2, per-class PR/RC/F1, normalized CM
 
-### Known failure modes
-- Oversampling มากไป → overfit minority (ดู val F1 ของคลาส 2/4)
-- Augmentation สีแรงเกินไปบน artifacts ขนาดเล็ก → สัญญาณหาย
-- ตัดสินจาก accuracy อย่างเดียว → minority collapse
+
