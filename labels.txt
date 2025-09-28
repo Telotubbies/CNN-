@@ -1,0 +1,26 @@
+
+
+The labels in the dataset are as followed:
+
+- image			# image file name
+- class			# class labels
+				0: Good
+				1: Under-Extrusion
+				2: Stringing
+				4: Spaghetti
+
+- layer			# layer of completion of the printed part
+- nozzle 		# nozzle diameter in mm
+- filament		# filament type (PLA)
+- ex_mul		# global extrusion multiplier during print
+- retraction		# retraction value during print
+- layer_height		# layer height of the print in mm
+- filament_color	# color of the filament (gray)
+- shape			# identifier of the printed geometry (1-34)
+- recording		# datetime coded name of the print/recording
+- printbed_color	# color of the printbed (black, silver)
+- extrusion_multiplier	# extrusion multiplayer mean for synthetic underextrusion
+- extrusion_std		# standard deviation for the extrusion multiplier for synthetic underextrusion
+- modified_layers	# list of all affected layers for synthetic underextrusion
+- brightness		# mean brightness of the image
+- mean_brightness	# mean brightness of the recording
